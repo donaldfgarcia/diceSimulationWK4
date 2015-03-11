@@ -1,7 +1,7 @@
 ﻿<Window x:Class="DiceSimulationWK4.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="800" Width="700" WindowStartupLocation="CenterScreen" FontFamily="Calibri" FontSize="16">
+        Title="MainWindow" Height="800" Width="700" WindowStartupLocation="CenterScreen" FontFamily="Calibri" FontSize="16" Loaded="Window_Loaded">
     <Grid>
         <TextBox x:Name="die1Display" HorizontalAlignment="Left" Height="50" Margin="30,36,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" IsTabStop="False" TextAlignment="Center" FontSize="36" IsReadOnly="True"/>
         <TextBox x:Name="die2Display" HorizontalAlignment="Left" Height="50" Margin="120,36,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" IsTabStop="False" TextAlignment="Center" FontSize="36" IsReadOnly="True"/>
@@ -10,22 +10,22 @@
         <TextBox x:Name="txtDoubles" HorizontalAlignment="Left" Height="24" Margin="40,92,0,0" TextWrapping="Wrap" Text="DOUBLES" VerticalAlignment="Top" Width="120" TextAlignment="Center" Foreground="#FFF70606" IsReadOnly="True" FontWeight="Bold" FontStyle="Italic" Visibility="Hidden"/>
         <ListBox x:Name="sequence2Results" HorizontalAlignment="Left" Height="281" Margin="461,56,-144,-17" VerticalAlignment="Top" Width="200" FontSize="12"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="461,36,-143,0" TextWrapping="Wrap" Text="Roll     Die1     Die2     Total" VerticalAlignment="Top" Width="199"/>
-        <ListBox x:Name="sequence1Display" HorizontalAlignment="Left" Height="280" Margin="241,342,0,-302" VerticalAlignment="Top" Width="200"/>
+        <ListBox x:Name="sequence1Display" HorizontalAlignment="Left" Height="280" Margin="241,375,0,-302" VerticalAlignment="Top" Width="200" BorderThickness="1"/>
         <Label Content="Sequence One" HorizontalAlignment="Left" Margin="241,6,0,0" VerticalAlignment="Top" Width="200" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label Content="Sequence Two" HorizontalAlignment="Left" Margin="461,6,-144,0" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
-        <ListBox x:Name="sequence2Display" HorizontalAlignment="Left" Height="280" Margin="460,342,-143,-302" VerticalAlignment="Top" Width="200"/>
-        <Label Content="Enter Total Value to Search" HorizontalAlignment="Left" Margin="10,186,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="sequence2Display" HorizontalAlignment="Left" Height="280" Margin="460,375,-143,-302" VerticalAlignment="Top" Width="200"/>
+        <Label Content="Enter Total Value to Search" HorizontalAlignment="Left" Margin="15,198,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="errorMessage" HorizontalAlignment="Left" Height="23" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" BorderThickness="0" Focusable="False" IsTabStop="False" Foreground="#FFF30707" Text="Error Message"/>
-        <Button x:Name="rollDice" Content="_Roll Once" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.947,-0.385" TabIndex="0"/>
-        <Button x:Name="roll100" Content="Roll 100" HorizontalAlignment="Left" Height="26" Margin="109,124,0,0" VerticalAlignment="Top" Width="75"/>
-        <ComboBox x:Name="displayChoice" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Width="174" SelectedIndex="0"/>
-        <Button x:Name="go" Content="_GO!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="186,155,0,0" IsDefault="True"/>
-        <TextBox x:Name="searchValue" HorizontalAlignment="Left" Height="23" Margin="10,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="search" Content="Sea_rch" HorizontalAlignment="Left" Margin="140,210,0,0" VerticalAlignment="Top" Width="75"/>
-        <RadioButton x:Name="searchSequence1" Content="Search Sequence 1" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="searchSequence2" Content="Search Sequence 2" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="clearResults" Content="_Clear" HorizontalAlignment="Left" Margin="10,305,0,0" VerticalAlignment="Top" Width="75" TabIndex="2"/>
-        <Button x:Name="exit" Content="E_xit" HorizontalAlignment="Left" Margin="109,305,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" RenderTransformOrigin="0.667,0.192" TabIndex="3"/>
+        <Button x:Name="rollDice" Content="_Roll Once" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.947,-0.385" TabIndex="1" Click="rollDice_Click"/>
+        <Button x:Name="roll100" Content="Roll _100" HorizontalAlignment="Left" Height="26" Margin="109,124,0,0" VerticalAlignment="Top" Width="75" Click="roll100_Click" TabIndex="2"/>
+        <ComboBox x:Name="displayChoice" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Width="174" SelectedIndex="0" TabIndex="3"/>
+        <Button x:Name="go" Content="_GO!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="186,155,0,0" IsDefault="True" TabIndex="4" Click="go_Click"/>
+        <TextBox x:Name="searchValue" HorizontalAlignment="Left" Height="25" Margin="15,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="5" HorizontalContentAlignment="Center"/>
+        <Button x:Name="search" Content="Sea_rch" HorizontalAlignment="Left" Margin="145,222,0,0" VerticalAlignment="Top" Width="75" TabIndex="6" Click="search_Click"/>
+        <Button x:Name="clearResults" Content="_Clear" HorizontalAlignment="Left" Margin="10,342,0,0" VerticalAlignment="Top" Width="75" TabIndex="12" Click="clearResults_Click"/>
+        <Button x:Name="exit" Content="E_xit" HorizontalAlignment="Left" Margin="109,342,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" RenderTransformOrigin="0.667,0.192" TabIndex="13" Click="exit_Click"/>
+        <ListBox x:Name="sequence1TotalDisplay" HorizontalAlignment="Left" Height="30" Margin="241,345,0,0" VerticalAlignment="Top" Width="200" BorderThickness="0"/>
+        <ListBox x:Name="sequence2TotalDisplay" HorizontalAlignment="Left" Height="30" Margin="460,345,0,0" VerticalAlignment="Top" Width="200" BorderThickness="0"/>
 
     </Grid>
 </Window>
